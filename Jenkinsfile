@@ -174,7 +174,7 @@ def runSecurityTest() {
     def jenkinsIP = findJenkinsIp()
     dir("webapp") {
         withDockerContainer("maven:3.5.0-jdk-8-alpine")  {
-            sh "mvn sonar:sonar -Dsonar.host.url=https://sonar.git.it.dore.vn"
+            sh "mvn sonar:sonar -Dsonar.host.url=https://sonar.it.dore.vn"
         }
         sh "ls -al ${sonarReportDir}"
         //archiveArtifacts "**/${sonarReportDir}/*.txt"
