@@ -69,13 +69,13 @@ def initialize() {
     env.MAX_ENVIRONMENTNAME_LENGTH = 32
     setEnvironment()
     env.IMAGE_NAME = "hello-world:" + 
-        ((env.BRANCH_NAME == "master") ? "" : "${env.ENVIRONMENT}-") + 
+        ((env.BRANCH == "master") ? "" : "${env.ENVIRONMENT}-") + 
         env.BUILD_ID
     showEnvironmentVariables()
 }
 
 def setEnvironment() {
-    def branchName = env.BRANCH_NAME.toLowerCase()
+    def branchName = env.BRANCH.toLowerCase()
     def environment = 'dev'
     echo "branchName = ${branchName}"
     if (branchName == "") {
@@ -161,7 +161,7 @@ def deployImage(environment) {
 }
 
 def getContext(environment) {
-    return (env.BRANCH_NAME == 'master') ? environment : 'dev'
+    return (env.BRANCH == 'master') ? environment : 'dev'
 }
 
 
